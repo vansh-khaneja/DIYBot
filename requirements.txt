@@ -1,0 +1,6 @@
+openai
+groq
+ollama
+requests
+python-dotenv
+
