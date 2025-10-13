@@ -3,4 +3,7 @@ groq
 ollama
 requests
 python-dotenv
+fastapi
+uvicorn
+pydantic
 

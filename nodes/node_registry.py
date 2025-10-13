@@ -3,7 +3,7 @@ Simple Node Registry - Central registry for all available nodes.
 """
 
 from typing import Dict, List, Type, Any, Optional
-from base_node import BaseNode
+from .base_node import BaseNode
 
 
 class NodeRegistry:
