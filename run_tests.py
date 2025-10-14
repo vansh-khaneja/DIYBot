@@ -16,13 +16,13 @@ def run_test(test_file):
                               capture_output=True, text=True, encoding='utf-8')
         
         if result.returncode == 0:
-            print("✅ Test passed!")
+            print("[OK] Test passed!")
         else:
-            print("❌ Test failed!")
+            print("[FAIL] Test failed!")
             print(result.stderr)
             
     except Exception as e:
-        print(f"❌ Error running test: {e}")
+        print(f"[FAIL] Error running test: {e}")
 
 def main():
     """Run all tests"""

@@ -1,11 +1,15 @@
 """
-Main FastAPI application entry point
+Development server for BotCanvas API
 """
 
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.v1.nodes import router as nodes_router
+from dotenv import load_dotenv
 
+# Load environment variables
+load_dotenv()
 # Register all nodes on startup
 try:
     from register_nodes import register_all_nodes
@@ -13,19 +17,19 @@ try:
 except ImportError as e:
     print(f"Warning: Could not register nodes: {e}")
 
-# Create FastAPI app
+# Create FastAPI app for development
 app = FastAPI(
-    title="BotCanvas API",
-    description="No-code chatbot builder API",
-    version="1.0.0",
+    title="BotCanvas API - Development",
+    description="Development server for no-code chatbot builder API",
+    version="dev",
     docs_url="/docs",
     redoc_url="/redoc"
 )
 
-# Add CORS middleware for frontend integration
+# Add CORS middleware for development (allow all origins)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific frontend URLs
+    allow_origins=["*"],  # Development: allow all origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -36,11 +40,10 @@ app.include_router(nodes_router, prefix="/api/v1")
 
 @app.get("/")
 async def root():
-    """Root endpoint with API information"""
+    """Root endpoint"""
     return {
-        "message": "BotCanvas API",
-        "version": "1.0.0",
-        "description": "No-code chatbot builder API",
+        "message": "BotCanvas API - Development Server",
+        "version": "dev",
         "docs": "/docs",
         "endpoints": {
             "nodes": "/api/v1/nodes"
@@ -50,8 +53,18 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
-    return {"status": "healthy", "service": "BotCanvas API"}
+    return {"status": "healthy", "service": "BotCanvas API - Development"}
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    print("[START] Starting BotCanvas Development Server...")
+    print("[DOCS] API Documentation: http://localhost:8000/docs")
+    print("[WEB] API Base URL: http://localhost:8000")
+    print("=" * 50)
+    
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=8000,
+        reload=True,  # Auto-reload on code changes
+        log_level="info"
+    )

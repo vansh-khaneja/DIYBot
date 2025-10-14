@@ -48,16 +48,7 @@ class LanguageModelNode(BaseNode):
                 type="string",
                 description="The generated response from the language model"
             ),
-            NodeOutput(
-                name="metadata",
-                type="dict",
-                description="Metadata about the generation (service, model, lengths, etc.)"
-            ),
-            NodeOutput(
-                name="success",
-                type="boolean",
-                description="Whether the generation was successful"
-            )
+           
         ]
     
     def _define_parameters(self) -> List[NodeParameter]:

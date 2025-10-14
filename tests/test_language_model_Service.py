@@ -78,9 +78,9 @@ for service_name, model_name, query in test_cases:
     print(f"\nTesting {service_name} with {model_name}...")
     try:
         response = generate_response(service_name, model_name, query, max_tokens=50)
-        print(f"✓ {service_name} Success with {model_name}")
+        print(f"[OK] {service_name} Success with {model_name}")
         print(f"  Response: {response}")
     except Exception as e:
-        print(f"✗ {service_name} - Error: {e}")
+        print(f"[FAIL] {service_name} - Error: {e}")
 
 print("\n=== Test Complete ===")

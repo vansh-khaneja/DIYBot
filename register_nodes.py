@@ -25,8 +25,9 @@ def register_all_nodes():
     register_node(QueryNode)
     register_node(ResponseNode)
     
-    print("✅ All nodes registered successfully!")
-    print(f"📊 Total registered nodes: {len(register_node.__globals__['node_registry'].list_nodes())}")
+    print("[OK] All nodes registered successfully!")
+    from nodes.node_registry import node_registry
+    print(f"[DATA] Total registered nodes: {len(node_registry.list_nodes())}")
 
 if __name__ == "__main__":
     register_all_nodes()
