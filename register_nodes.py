@@ -13,6 +13,7 @@ sys.path.insert(0, project_root)
 from nodes.langauage_model_node.language_model_node import LanguageModelNode
 from nodes.query_node.query_node import QueryNode
 from nodes.response_node.response_node import ResponseNode
+from nodes.web_search_node.web_search_node import WebSearchNode
 
 # Import the registry
 from nodes.node_registry import register_node
@@ -24,6 +25,7 @@ def register_all_nodes():
     register_node(LanguageModelNode)
     register_node(QueryNode)
     register_node(ResponseNode)
+    register_node(WebSearchNode)
     
     print("[OK] All nodes registered successfully!")
     from nodes.node_registry import node_registry

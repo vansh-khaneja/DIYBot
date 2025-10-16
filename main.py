@@ -6,6 +6,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.v1.nodes import router as nodes_router
+from api.v1.credentials import router as credentials_router
+from api.v1.workflows import router as workflows_router
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -37,6 +39,8 @@ app.add_middleware(
 
 # Include API routers
 app.include_router(nodes_router, prefix="/api/v1")
+app.include_router(credentials_router, prefix="/api/v1")
+app.include_router(workflows_router, prefix="/api/v1")
 
 @app.get("/")
 async def root():
@@ -46,7 +50,9 @@ async def root():
         "version": "dev",
         "docs": "/docs",
         "endpoints": {
-            "nodes": "/api/v1/nodes"
+            "nodes": "/api/v1/nodes",
+            "credentials": "/api/v1/credentials",
+            "workflows": "/api/v1/workflows"
         }
     }
 
