@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.v1.nodes import router as nodes_router
 from api.v1.credentials import router as credentials_router
 from api.v1.workflows import router as workflows_router
+from api.v1.vector_store import router as vector_store_router
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -41,6 +42,7 @@ app.add_middleware(
 app.include_router(nodes_router, prefix="/api/v1")
 app.include_router(credentials_router, prefix="/api/v1")
 app.include_router(workflows_router, prefix="/api/v1")
+app.include_router(vector_store_router)
 
 @app.get("/")
 async def root():
@@ -52,7 +54,8 @@ async def root():
         "endpoints": {
             "nodes": "/api/v1/nodes",
             "credentials": "/api/v1/credentials",
-            "workflows": "/api/v1/workflows"
+            "workflows": "/api/v1/workflows",
+            "vector-store": "/api/v1/vector-store"
         }
     }
 
