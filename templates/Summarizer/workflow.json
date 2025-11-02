@@ -1,0 +1,576 @@
+{
+  "nodes": [
+    {
+      "id": "summarynode_1761972044159",
+      "type": "custom",
+      "position": {
+        "x": 877.1270210383183,
+        "y": 277.75703742114115
+      },
+      "data": {
+        "nodeSchema": {
+          "node_id": "summarynode",
+          "name": "SummaryNode",
+          "description": "\n    Summary Node - Summarizes large content using chunking and tree-like combination.\n    ",
+          "inputs": [
+            {
+              "name": "content",
+              "type": "string",
+              "description": "The content to be summarized",
+              "required": true,
+              "default_value": null
+            }
+          ],
+          "outputs": [
+            {
+              "name": "summary",
+              "type": "string",
+              "description": "The final summarized content"
+            },
+            {
+              "name": "metadata",
+              "type": "dict",
+              "description": "Metadata about the summarization process including chunk count, levels, etc."
+            }
+          ],
+          "parameters": [
+            {
+              "name": "service",
+              "type": "string",
+              "description": "AI service to use for summarization",
+              "required": true,
+              "default_value": "openai",
+              "options": null
+            },
+            {
+              "name": "model",
+              "type": "string",
+              "description": "Language model to use",
+              "required": true,
+              "default_value": "gpt-3.5-turbo",
+              "options": null
+            },
+            {
+              "name": "chunk_size",
+              "type": "int",
+              "description": "Maximum size of each chunk in characters",
+              "required": false,
+              "default_value": 2000,
+              "options": null
+            },
+            {
+              "name": "summarization_level",
+              "type": "string",
+              "description": "Level of summarization (small, medium, large)",
+              "required": false,
+              "default_value": "medium",
+              "options": null
+            },
+            {
+              "name": "max_chunks_per_level",
+              "type": "int",
+              "description": "Maximum number of chunks to combine at each level",
+              "required": false,
+              "default_value": 5,
+              "options": null
+            }
+          ],
+          "styling": {
+            "icon": "",
+            "background_color": "#1f1f1f",
+            "border_color": "#06b6d4",
+            "text_color": "#ffffff",
+            "custom_css": "\n            .summary-node-container {\n                display: flex;\n                align-items: center;\n                padding: 16px 20px;\n                background: #1f1f1f;\n                border: 1.5px solid #06b6d4;\n                border-radius: 8px;\n                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n                transition: all 0.2s ease;\n                width: 220px;\n                height: 100px;\n                position: relative;\n            }\n            .summary-node-container:hover {\n                border-color: #22d3ee;\n                box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);\n            }\n            .summary-icon { margin-right: 12px; flex-shrink: 0; }\n            .summary-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }\n            .summary-title { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }\n            .summary-subtitle { font-size: 11px; color: #06b6d4; opacity: 0.9; line-height: 1.2; }\n            ",
+            "subtitle": "",
+            "icon_position": "",
+            "shape": "custom",
+            "width": 220,
+            "height": 100,
+            "html_template": "\n            <div class=\"summary-node-container\">\n                <div class=\"summary-icon\">\n                    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>\n                        <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' stroke='#06b6d4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/>\n                        <polyline points='14,2 14,8 20,8' stroke='#06b6d4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/>\n                        <line x1='16' y1='13' x2='8' y2='13' stroke='#06b6d4' stroke-width='2' stroke-linecap='round'/>\n                        <line x1='16' y1='17' x2='8' y2='17' stroke='#06b6d4' stroke-width='2' stroke-linecap='round'/>\n                        <polyline points='10,9 9,9 8,9' stroke='#06b6d4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/>\n                    </svg>\n                </div>\n                <div class=\"summary-content\">\n                    <div class=\"summary-title\">Summary Node</div>\n                    <div class=\"summary-subtitle\">Content Summarizer</div>\n                </div>\n            </div>\n            ",
+            "css_classes": "",
+            "inline_styles": "{}",
+            "hide_outputs": false
+          },
+          "ui_config": {
+            "node_id": "summarynode",
+            "node_name": "SummaryNode",
+            "groups": [
+              {
+                "name": "model_settings",
+                "label": "Model Settings",
+                "description": null,
+                "components": [
+                  {
+                    "type": "label",
+                    "name": "label_7941149774424303895",
+                    "label": "",
+                    "description": null,
+                    "required": false,
+                    "default_value": null,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "text": "<strong>AI Service:</strong>",
+                    "html": false
+                  },
+                  {
+                    "type": "select",
+                    "name": "service",
+                    "label": "Service",
+                    "description": null,
+                    "required": true,
+                    "default_value": "openai",
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "options": [
+                      {
+                        "value": "openai",
+                        "label": "OpenAI",
+                        "disabled": false
+                      },
+                      {
+                        "value": "groq",
+                        "label": "Groq",
+                        "disabled": false
+                      },
+                      {
+                        "value": "ollama",
+                        "label": "Ollama",
+                        "disabled": false
+                      }
+                    ],
+                    "multiple": false
+                  },
+                  {
+                    "type": "select",
+                    "name": "model",
+                    "label": "Model",
+                    "description": null,
+                    "required": true,
+                    "default_value": "gpt-3.5-turbo",
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "options": [
+                      {
+                        "value": "gpt-3.5-turbo",
+                        "label": "GPT-3.5 Turbo",
+                        "disabled": false
+                      },
+                      {
+                        "value": "gpt-4o",
+                        "label": "GPT-4o",
+                        "disabled": false
+                      },
+                      {
+                        "value": "gpt-4o-mini",
+                        "label": "GPT-4o Mini",
+                        "disabled": false
+                      }
+                    ],
+                    "multiple": false
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              },
+              {
+                "name": "summarization_settings",
+                "label": "Summarization Settings",
+                "description": null,
+                "components": [
+                  {
+                    "type": "label",
+                    "name": "label_3325710301610464166",
+                    "label": "",
+                    "description": null,
+                    "required": false,
+                    "default_value": null,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "text": "<strong>Chunk Size:</strong>",
+                    "html": false
+                  },
+                  {
+                    "type": "slider",
+                    "name": "chunk_size",
+                    "label": "Characters per chunk",
+                    "description": null,
+                    "required": false,
+                    "default_value": 2000,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null
+                  },
+                  {
+                    "type": "label",
+                    "name": "label_-5003962258844720075",
+                    "label": "",
+                    "description": null,
+                    "required": false,
+                    "default_value": null,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "text": "<strong>Summarization Level:</strong>",
+                    "html": false
+                  },
+                  {
+                    "type": "select",
+                    "name": "summarization_level",
+                    "label": "Level",
+                    "description": null,
+                    "required": true,
+                    "default_value": "medium",
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "options": [
+                      {
+                        "value": "small",
+                        "label": "Small (Brief)",
+                        "disabled": false
+                      },
+                      {
+                        "value": "medium",
+                        "label": "Medium (Balanced)",
+                        "disabled": false
+                      },
+                      {
+                        "value": "large",
+                        "label": "Large (Detailed)",
+                        "disabled": false
+                      }
+                    ],
+                    "multiple": false
+                  },
+                  {
+                    "type": "label",
+                    "name": "label_6136415498933962979",
+                    "label": "",
+                    "description": null,
+                    "required": false,
+                    "default_value": null,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "text": "<strong>Max Chunks per Level:</strong>",
+                    "html": false
+                  },
+                  {
+                    "type": "slider",
+                    "name": "max_chunks_per_level",
+                    "label": "Chunks to combine",
+                    "description": null,
+                    "required": false,
+                    "default_value": 5,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              }
+            ],
+            "global_styling": {
+              "font_family": "Inter, sans-serif",
+              "color_scheme": "light"
+            },
+            "layout": "vertical",
+            "columns": null,
+            "dialog_config": {
+              "title": "Configure SummaryNode",
+              "description": "Summary Node - Summarizes large content using chunking and tree-like combination.",
+              "width": "max-w-2xl",
+              "height": "max-h-[90vh]",
+              "background_color": "#1f1f1f",
+              "border_color": "#06b6d4",
+              "text_color": "#ffffff",
+              "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\" stroke=\"#06b6d4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                    <polyline points=\"14,2 14,8 20,8\" stroke=\"#06b6d4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                    <line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\" stroke=\"#06b6d4\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n                    <line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\" stroke=\"#06b6d4\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n                    <polyline points=\"10,9 9,9 8,9\" stroke=\"#06b6d4\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                </svg>",
+              "icon_color": "#06b6d4",
+              "header_background": "#1f1f1f",
+              "footer_background": "#1f1f1f",
+              "button_primary_color": "#06b6d4",
+              "button_secondary_color": "#374151"
+            }
+          }
+        },
+        "parameters": {
+          "service": "openai",
+          "model": "gpt-3.5-turbo",
+          "chunk_size": 2000,
+          "summarization_level": "small",
+          "max_chunks_per_level": 5
+        }
+      }
+    },
+    {
+      "id": "querynode_1761972060877",
+      "type": "custom",
+      "position": {
+        "x": 215.99865606970718,
+        "y": 156.88973883552114
+      },
+      "data": {
+        "nodeSchema": {
+          "node_id": "querynode",
+          "name": "QueryNode",
+          "description": "\n    Query Node - Handles user input queries.\n    \n    This node serves as the entry point for user queries in the chatbot workflow.\n    It receives user input and passes it through to the next nodes in the workflow.\n    ",
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "The processed query ready for the next node"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "The user's input query or message",
+              "required": true,
+              "default_value": "Hi there!",
+              "options": null
+            }
+          ],
+          "styling": {
+            "icon": "",
+            "background_color": "#1f1f1f",
+            "border_color": "#06b6d4",
+            "text_color": "#ffffff",
+            "custom_css": "\n            .query-node-container {\n                display: flex;\n                align-items: center;\n                padding: 16px 20px;\n                background: #1f1f1f;\n                border: 1.5px solid #06b6d4;\n                border-radius: 9999px;\n                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n                transition: all 0.2s ease;\n                transform-origin: center center;\n                width: 220px;\n                height: 90px;\n                position: relative;\n            }\n            .query-node-container:hover {\n                border-color: #22d3ee;\n                box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);\n            }\n            .query-icon { margin-right: 12px; flex-shrink: 0; color: #06b6d4; display: flex; align-items: center; }\n            .query-icon svg { width: 20px; height: 20px; }\n            .query-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 2px; }\n            .query-title { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }\n            .query-subtitle { font-size: 11px; color: #06b6d4; opacity: 0.9; line-height: 1.2; }\n            .query-preview {\n                margin-top: 2px;\n                font-size: 11px;\n                color: #cbd5e1;\n                opacity: 0.9;\n                max-width: 160px;\n                white-space: nowrap;\n                overflow: hidden;\n                text-overflow: ellipsis;\n            }\n            ",
+            "subtitle": "",
+            "icon_position": "",
+            "shape": "custom",
+            "width": 220,
+            "height": 90,
+            "html_template": "\n            <div class=\"query-node-container\">\n                <div class=\"query-icon\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-monitor-down-icon lucide-monitor-down\"><path d=\"M12 13V7\"/><path d=\"m15 10-3 3-3-3\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><path d=\"M12 17v4\"/><path d=\"M8 21h8\"/></svg>\n                </div>\n                <div class=\"query-content\">\n                    <div class=\"query-title\">QueryNode</div>\n                    <div class=\"query-subtitle\">INPUT</div>\n                    <div class=\"query-preview\" title=\"{{query}}\">{{query}}</div>\n                </div>\n            </div>\n            ",
+            "css_classes": "",
+            "inline_styles": "{}",
+            "hide_outputs": false
+          },
+          "ui_config": {
+            "node_id": "querynode",
+            "node_name": "QueryNode",
+            "groups": [
+              {
+                "name": "query_config",
+                "label": "Query Configuration",
+                "description": null,
+                "components": [
+                  {
+                    "type": "text_input",
+                    "name": "query",
+                    "label": "User Query *",
+                    "description": null,
+                    "required": true,
+                    "default_value": "Hi there!",
+                    "placeholder": "Enter your query here...",
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": {
+                      "width": "100%"
+                    }
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              }
+            ],
+            "global_styling": {
+              "font_family": "Inter, sans-serif",
+              "color_scheme": "light"
+            },
+            "layout": "vertical",
+            "columns": null,
+            "dialog_config": {
+              "title": "Configure QueryNode",
+              "description": "Query Node - Handles user input queries. This node serves as the entry point for user queries in the chatbot workflow. It receives user input and passes it through to the next nodes in the workflow.",
+              "width": "max-w-2xl",
+              "height": "max-h-[90vh]",
+              "background_color": "#1f1f1f",
+              "border_color": "#60a5fa",
+              "text_color": "#ffffff",
+              "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M8 9h8M8 13h6M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z\" stroke=\"#60a5fa\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                </svg>",
+              "icon_color": "#60a5fa",
+              "header_background": "#1f1f1f",
+              "footer_background": "#1f1f1f",
+              "button_primary_color": "#60a5fa",
+              "button_secondary_color": "#374151"
+            }
+          }
+        },
+        "parameters": {
+          "query": "Elon Reeve Musk (/ˈiːlɒn/ EE-lon; born June 28, 1971) is a businessman and entrepreneur known for his leadership of Tesla, SpaceX, Twitter, and xAI. Musk has been the wealthiest person in the world since 2021; as of October 2025, Forbes estimates his net worth to be around $500 billion.  Born into a wealthy family in Pretoria, South Africa, Musk emigrated in 1989 to Canada; he had obtained Canadian citizenship at birth through his Canadian-born mother. He received bachelor's degrees in 1997 from the University of Pennsylvania in Philadelphia, United States, before moving to California to pursue business ventures. In 1995, Musk co-founded the software company Zip2. Following its sale in 1999, he co-founded X.com, an online payment company that later merged to form PayPal, which was acquired by eBay in 2002. That year, Musk also became an American citizen.  In 2002, Musk founded the space technology company SpaceX, becoming its CEO and chief engineer; the company has since led innovations in reusable rockets and commercial spaceflight. Musk joined the automaker Tesla as an early investor in 2004 and became its CEO and product architect in 2008; it has since become a leader in electric vehicles. In 2015, he co-founded OpenAI to advance artificial intelligence (AI) research, but later left; growing discontent with the organization's direction and their leadership in the AI boom in the 2020s led him to establish xAI. In 2022, he acquired the social network Twitter, implementing significant changes, and rebranding it as X in 2023. His other businesses include the neurotechnology company Neuralink, which he co-founded in 2016, and the tunneling company the Boring Company, which he founded in 2017.  Musk is a supporter of global far-right figures, causes, and political parties. He was the largest donor in the 2024 U.S. presidential election, where he supported Donald Trump. After Trump was inaugurated as president in early 2025, Musk served as Senior Advisor to the President and as the de facto head of DOGE. After a public feud with Trump, Musk left the Trump administration and returned to his technology companies.  Musk's political activities, views, and statements have made him a polarizing figure, especially following the COVID-19 pandemic. He has been criticized for making unscientific and misleading statements, including COVID-19 misinformation and promoting conspiracy theories, and affirming antisemitic, racist, and transphobic comments. His acquisition of Twitter was controversial due to a subsequent increase in hate speech and the spread of misinformation on the service. His role in the second Trump administration attracted considerable public backlash, particularly in response to DOGE."
+        }
+      }
+    },
+    {
+      "id": "responsenode_1761972070198",
+      "type": "custom",
+      "position": {
+        "x": 1425.8010540357645,
+        "y": 399.11991450277816
+      },
+      "data": {
+        "nodeSchema": {
+          "node_id": "responsenode",
+          "name": "ResponseNode",
+          "description": "\n    Response Node - Handles final response formatting and output.\n    \n    This node serves as the final output point for chatbot responses.\n    It receives processed data from previous nodes and formats it into\n    a user-friendly response.\n    ",
+          "inputs": [
+            {
+              "name": "input_data",
+              "type": "string",
+              "description": "Combined input data from multiple connections (user query, knowledge base response, etc.)",
+              "required": true,
+              "default_value": null
+            }
+          ],
+          "outputs": [
+            {
+              "name": "final_response",
+              "type": "string",
+              "description": "The final processed response that will be displayed"
+            }
+          ],
+          "parameters": [],
+          "styling": {
+            "icon": "",
+            "background_color": "#1f1f1f",
+            "border_color": "#10b981",
+            "text_color": "#ffffff",
+            "custom_css": "\n            .response-node-container {\n                display: flex;\n                align-items: center;\n                padding: 16px 20px;\n                background: #1f1f1f;\n                border: 1.5px solid #10b981;\n                border-radius: 9999px;\n                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n                transition: all 0.2s ease;\n                transform-origin: center center;\n                width: 220px;\n                height: 90px;\n                position: relative;\n            }\n            .response-node-container:hover {\n                border-color: #34d399;\n                box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);\n            }\n            .response-icon { margin-right: 12px; flex-shrink: 0; color: #10b981; display: flex; align-items: center; }\n            .response-icon svg { width: 20px; height: 20px; }\n            .response-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 2px; }\n            .response-title { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }\n            .response-subtitle { font-size: 11px; color: #10b981; opacity: 0.9; line-height: 1.2; }\n            .response-preview {\n                margin-top: 2px;\n                font-size: 11px;\n                color: #cbd5e1;\n                opacity: 0.9;\n                max-width: 160px;\n                white-space: nowrap;\n                overflow: hidden;\n                text-overflow: ellipsis;\n            }\n            ",
+            "subtitle": "",
+            "icon_position": "",
+            "shape": "custom",
+            "width": 220,
+            "height": 90,
+            "html_template": "\n            <div class=\"response-node-container\">\n                <div class=\"response-icon\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-monitor-up-icon lucide-monitor-up\"><path d=\"m9 10 3-3 3 3\"/><path d=\"M12 13V7\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><path d=\"M12 17v4\"/><path d=\"M8 21h8\"/></svg>\n                </div>\n                <div class=\"response-content\">\n                    <div class=\"response-title\">ResponseNode</div>\n                    <div class=\"response-subtitle\">OUTPUT</div>\n                    <div class=\"response-preview\" title=\"{{response_content}}\">{{response_content}}</div>\n                </div>\n            </div>\n            ",
+            "css_classes": "",
+            "inline_styles": "{}",
+            "hide_outputs": true
+          },
+          "ui_config": {
+            "node_id": "responsenode",
+            "node_name": "ResponseNode",
+            "groups": [
+              {
+                "name": "response_display",
+                "label": "Response Display",
+                "description": null,
+                "components": [
+                  {
+                    "type": "label",
+                    "name": "label_-3327822082581774603",
+                    "label": "",
+                    "description": null,
+                    "required": false,
+                    "default_value": null,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "text": "This node displays the final response from your workflow.",
+                    "html": false
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              }
+            ],
+            "global_styling": {
+              "font_family": "Inter, sans-serif",
+              "color_scheme": "light"
+            },
+            "layout": "vertical",
+            "columns": null,
+            "dialog_config": {
+              "title": "Configure ResponseNode",
+              "description": "Response Node - Displays the final response from your workflow.",
+              "width": "max-w-2xl",
+              "height": "max-h-[90vh]",
+              "background_color": "#1f1f1f",
+              "border_color": "#10b981",
+              "text_color": "#ffffff",
+              "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z\" stroke=\"#10b981\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                </svg>",
+              "icon_color": "#10b981",
+              "header_background": "#1f1f1f",
+              "footer_background": "#1f1f1f",
+              "button_primary_color": "#10b981",
+              "button_secondary_color": "#374151"
+            }
+          }
+        },
+        "parameters": {},
+        "response": "Elon Musk, a prominent businessman and entrepreneur, is known for leading companies like Tesla, SpaceX, and Twitter, among others. With a net worth of around $500 billion, he has founded successful ventures in technology such as Zip2, PayPal, Neuralink, and the Boring Company. Musk's support of far-right figures and causes, as well as his significant donation to Donald Trump's 2024 presidential campaign, have drawn attention. Additionally, his role as Senior Advisor to President Trump and head of DOGE led to a public feud resulting in his departure from the administration. Musk's political activities and controversial statements have made him a polarizing figure, facing criticism for spreading misinformation and promoting hate speech. The acquisition of Twitter and its rebranding as X by Musk faced backlash for increasing hate speech and misinformation on the platform, further adding to his controversial reputation.",
+        "response_content": "Elon Musk, a prominent businessman and entrepreneur, is known for leading companies like Tesla, SpaceX, and Twitter, among others. With a net worth of around $500 billion, he has founded successful ventures in technology such as Zip2, PayPal, Neuralink, and the Boring Company. Musk's support of far-right figures and causes, as well as his significant donation to Donald Trump's 2024 presidential campaign, have drawn attention. Additionally, his role as Senior Advisor to President Trump and head of DOGE led to a public feud resulting in his departure from the administration. Musk's political activities and controversial statements have made him a polarizing figure, facing criticism for spreading misinformation and promoting hate speech. The acquisition of Twitter and its rebranding as X by Musk faced backlash for increasing hate speech and misinformation on the platform, further adding to his controversial reputation."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "xy-edge__querynode_1761972060877output-query-summarynode_1761972044159input-content",
+      "source": "querynode_1761972060877",
+      "target": "summarynode_1761972044159",
+      "sourceHandle": "output-query",
+      "targetHandle": "input-content"
+    },
+    {
+      "id": "xy-edge__summarynode_1761972044159output-summary-responsenode_1761972070198input-input_data",
+      "source": "summarynode_1761972044159",
+      "target": "responsenode_1761972070198",
+      "sourceHandle": "output-summary",
+      "targetHandle": "input-input_data"
+    }
+  ],
+  "timestamp": "2025-11-01T04:42:42.202Z",
+  "name": "Content Summarizer"
+}

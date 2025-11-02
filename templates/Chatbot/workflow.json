@@ -1,0 +1,510 @@
+{
+  "nodes": [
+    {
+      "id": "querynode_1761942835827",
+      "type": "custom",
+      "position": {
+        "x": 267.9901468670023,
+        "y": 232.36505660002103
+      },
+      "data": {
+        "nodeSchema": {
+          "node_id": "querynode",
+          "name": "QueryNode",
+          "description": "\n    Query Node - Handles user input queries.\n    \n    This node serves as the entry point for user queries in the chatbot workflow.\n    It receives user input and passes it through to the next nodes in the workflow.\n    ",
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "The processed query ready for the next node"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "The user's input query or message",
+              "required": true,
+              "default_value": "Hi there!",
+              "options": null
+            }
+          ],
+          "styling": {
+            "icon": "",
+            "background_color": "#1f1f1f",
+            "border_color": "#06b6d4",
+            "text_color": "#ffffff",
+            "custom_css": "\n            .query-node-container {\n                display: flex;\n                align-items: center;\n                padding: 16px 20px;\n                background: #1f1f1f;\n                border: 1.5px solid #06b6d4;\n                border-radius: 9999px;\n                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n                transition: all 0.2s ease;\n                transform-origin: center center;\n                width: 220px;\n                height: 90px;\n                position: relative;\n            }\n            .query-node-container:hover {\n                border-color: #22d3ee;\n                box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);\n            }\n            .query-icon { margin-right: 12px; flex-shrink: 0; color: #06b6d4; display: flex; align-items: center; }\n            .query-icon svg { width: 20px; height: 20px; }\n            .query-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 2px; }\n            .query-title { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }\n            .query-subtitle { font-size: 11px; color: #06b6d4; opacity: 0.9; line-height: 1.2; }\n            .query-preview {\n                margin-top: 2px;\n                font-size: 11px;\n                color: #cbd5e1;\n                opacity: 0.9;\n                max-width: 160px;\n                white-space: nowrap;\n                overflow: hidden;\n                text-overflow: ellipsis;\n            }\n            ",
+            "subtitle": "",
+            "icon_position": "",
+            "shape": "custom",
+            "width": 220,
+            "height": 90,
+            "html_template": "\n            <div class=\"query-node-container\">\n                <div class=\"query-icon\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-monitor-down-icon lucide-monitor-down\"><path d=\"M12 13V7\"/><path d=\"m15 10-3 3-3-3\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><path d=\"M12 17v4\"/><path d=\"M8 21h8\"/></svg>\n                </div>\n                <div class=\"query-content\">\n                    <div class=\"query-title\">QueryNode</div>\n                    <div class=\"query-subtitle\">INPUT</div>\n                    <div class=\"query-preview\" title=\"{{query}}\">{{query}}</div>\n                </div>\n            </div>\n            ",
+            "css_classes": "",
+            "inline_styles": "{}",
+            "hide_outputs": false
+          },
+          "ui_config": {
+            "node_id": "querynode",
+            "node_name": "QueryNode",
+            "groups": [
+              {
+                "name": "query_config",
+                "label": "Query Configuration",
+                "description": null,
+                "components": [
+                  {
+                    "type": "text_input",
+                    "name": "query",
+                    "label": "User Query *",
+                    "description": null,
+                    "required": true,
+                    "default_value": "Hi there!",
+                    "placeholder": "Enter your query here...",
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": {
+                      "width": "100%"
+                    }
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              }
+            ],
+            "global_styling": {
+              "font_family": "Inter, sans-serif",
+              "color_scheme": "light"
+            },
+            "layout": "vertical",
+            "columns": null,
+            "dialog_config": {
+              "title": "Configure QueryNode",
+              "description": "Query Node - Handles user input queries. This node serves as the entry point for user queries in the chatbot workflow. It receives user input and passes it through to the next nodes in the workflow.",
+              "width": "max-w-2xl",
+              "height": "max-h-[90vh]",
+              "background_color": "#1f1f1f",
+              "border_color": "#60a5fa",
+              "text_color": "#ffffff",
+              "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M8 9h8M8 13h6M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z\" stroke=\"#60a5fa\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                </svg>",
+              "icon_color": "#60a5fa",
+              "header_background": "#1f1f1f",
+              "footer_background": "#1f1f1f",
+              "button_primary_color": "#60a5fa",
+              "button_secondary_color": "#374151"
+            }
+          }
+        },
+        "parameters": {
+          "query": "Hi there!"
+        }
+      }
+    },
+    {
+      "id": "languagemodelnode_1761942839838",
+      "type": "custom",
+      "position": {
+        "x": 783.5332265317015,
+        "y": 292.94611102173286
+      },
+      "data": {
+        "nodeSchema": {
+          "node_id": "languagemodelnode",
+          "name": "LanguageModelNode",
+          "description": "\n    Language Model Node - Generates AI responses using language models.\n    \n    This node takes a query and optional context, then uses a configured\n    language model service to generate a response.\n    ",
+          "inputs": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "The main text query to send to the language model",
+              "required": true,
+              "default_value": null
+            },
+            {
+              "name": "context",
+              "type": "string",
+              "description": "Additional context from knowledge base or other sources",
+              "required": false,
+              "default_value": null
+            }
+          ],
+          "outputs": [
+            {
+              "name": "response",
+              "type": "string",
+              "description": "The generated response from the language model"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "service",
+              "type": "string",
+              "description": "Language model service to use",
+              "required": true,
+              "default_value": "openai",
+              "options": [
+                "openai",
+                "groq",
+                "ollama"
+              ]
+            },
+            {
+              "name": "model",
+              "type": "string",
+              "description": "Specific model to use (leave empty for default)",
+              "required": false,
+              "default_value": "",
+              "options": null
+            },
+            {
+              "name": "system_prompt",
+              "type": "string",
+              "description": "System/base prompt to set AI behavior",
+              "required": false,
+              "default_value": "You are a helpful AI assistant.",
+              "options": null
+            },
+            {
+              "name": "temperature",
+              "type": "float",
+              "description": "Creativity/randomness level (0.0 to 1.0)",
+              "required": false,
+              "default_value": 0.7,
+              "options": null
+            },
+            {
+              "name": "max_tokens",
+              "type": "integer",
+              "description": "Maximum number of tokens in response",
+              "required": false,
+              "default_value": 500,
+              "options": null
+            }
+          ],
+          "styling": {
+            "icon": "",
+            "background_color": "#1f1f1f",
+            "border_color": "#a78bfa",
+            "text_color": "#ffffff",
+            "custom_css": "\n            .lm-node-container {\n                display: flex;\n                align-items: center;\n                padding: 18px 22px;\n                background: #1f1f1f;\n                border: 1.5px solid #a78bfa;\n                border-radius: 12px;\n                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n                transition: all 0.2s ease;\n                transform-origin: center center;\n                width: 240px;\n                height: 110px;\n                position: relative;\n            }\n            .lm-node-container:hover {\n                border-color: #c4b5fd;\n                box-shadow: 0 4px 12px rgba(167, 139, 250, 0.2);\n            }\n            .lm-icon { margin-right: 12px; flex-shrink: 0; color: #a78bfa; display: flex; align-items: center; }\n            .lm-icon svg { width: 20px; height: 20px; }\n            .lm-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }\n            .lm-title { font-size: 13px; font-weight: 600; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }\n            .lm-subtitle { font-size: 11px; color: #a78bfa; opacity: 0.9; line-height: 1.2; }\n            ",
+            "subtitle": "",
+            "icon_position": "",
+            "shape": "custom",
+            "width": 240,
+            "height": 110,
+            "html_template": "\n            <div class=\"lm-node-container\">\n                <div class=\"lm-icon\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-monitor-up-icon lucide-monitor-up\"><path d=\"m9 10 3-3 3 3\"/><path d=\"M12 13V7\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><path d=\"M12 17v4\"/><path d=\"M8 21h8\"/></svg>\n                </div>\n                <div class=\"lm-content\">\n                    <div class=\"lm-title\">LanguageModelNode</div>\n                    <div class=\"lm-subtitle\">AI BRAIN</div>\n                </div>\n            </div>\n            ",
+            "css_classes": "",
+            "inline_styles": "{}",
+            "hide_outputs": false
+          },
+          "ui_config": {
+            "node_id": "languagemodelnode",
+            "node_name": "LanguageModelNode",
+            "groups": [
+              {
+                "name": "model_config",
+                "label": "Model Configuration",
+                "description": null,
+                "components": [
+                  {
+                    "type": "select",
+                    "name": "service",
+                    "label": "AI Service *",
+                    "description": null,
+                    "required": true,
+                    "default_value": "openai",
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "options": [
+                      {
+                        "value": "openai",
+                        "label": "OpenAI",
+                        "disabled": false
+                      },
+                      {
+                        "value": "groq",
+                        "label": "Groq",
+                        "disabled": false
+                      },
+                      {
+                        "value": "ollama",
+                        "label": "Ollama",
+                        "disabled": false
+                      }
+                    ],
+                    "multiple": false
+                  },
+                  {
+                    "type": "select",
+                    "name": "model",
+                    "label": "Model *",
+                    "description": null,
+                    "required": true,
+                    "default_value": "",
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "options": [
+                      {
+                        "value": "",
+                        "label": "Select a service first",
+                        "disabled": false
+                      }
+                    ],
+                    "multiple": false
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              },
+              {
+                "name": "generation_config",
+                "label": "Generation Settings",
+                "description": null,
+                "components": [
+                  {
+                    "type": "slider",
+                    "name": "temperature",
+                    "label": "Temperature",
+                    "description": null,
+                    "required": false,
+                    "default_value": 0.7,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null
+                  },
+                  {
+                    "type": "number_input",
+                    "name": "max_tokens",
+                    "label": "Max Tokens",
+                    "description": null,
+                    "required": false,
+                    "default_value": 500,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              },
+              {
+                "name": "advanced_config",
+                "label": "Advanced Settings",
+                "description": null,
+                "components": [
+                  {
+                    "type": "textarea",
+                    "name": "system_prompt",
+                    "label": "System Prompt",
+                    "description": null,
+                    "required": false,
+                    "default_value": "",
+                    "placeholder": "Enter a custom system prompt...",
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "rows": 3
+                  }
+                ],
+                "collapsible": true,
+                "collapsed": true,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              }
+            ],
+            "global_styling": {
+              "font_family": "Inter, sans-serif",
+              "color_scheme": "light"
+            },
+            "layout": "vertical",
+            "columns": null,
+            "dialog_config": {
+              "title": "Configure LanguageModelNode",
+              "description": "Language Model Node - Generates AI responses using language models. This node takes a query and optional context, then uses a configured language model service to generate a response.",
+              "width": "max-w-2xl",
+              "height": "max-h-[90vh]",
+              "background_color": "#1f1f1f",
+              "border_color": "#a78bfa",
+              "text_color": "#ffffff",
+              "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M12 18V5M15 13a4.17 4.17 0 01-3-4 4.17 4.17 0 01-3 4M17.598 6.5A3 3 0 100 5a3 3 0 105.598 1.5M17.997 5.125a4 4 0 012.526 5.77M18 18a4 4 0 002-7.464M19.967 17.483A4 4 0 1112 18a4 4 0 11-7.967-.517M6 18a4 4 0 01-2-7.464M6.003 5.125a4 4 0 00-2.526 5.77\" stroke=\"#a78bfa\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                </svg>",
+              "icon_color": "#a78bfa",
+              "header_background": "#1f1f1f",
+              "footer_background": "#1f1f1f",
+              "button_primary_color": "#a78bfa",
+              "button_secondary_color": "#374151"
+            }
+          }
+        },
+        "parameters": {
+          "service": "openai",
+          "model": "gpt-4o-mini",
+          "system_prompt": "You are a helpful AI assistant.",
+          "temperature": 0.7,
+          "max_tokens": 500
+        }
+      }
+    },
+    {
+      "id": "responsenode_1761942841569",
+      "type": "custom",
+      "position": {
+        "x": 1264.7858440546265,
+        "y": 479.1297643326917
+      },
+      "data": {
+        "nodeSchema": {
+          "node_id": "responsenode",
+          "name": "ResponseNode",
+          "description": "\n    Response Node - Handles final response formatting and output.\n    \n    This node serves as the final output point for chatbot responses.\n    It receives processed data from previous nodes and formats it into\n    a user-friendly response.\n    ",
+          "inputs": [
+            {
+              "name": "input_data",
+              "type": "string",
+              "description": "Combined input data from multiple connections (user query, knowledge base response, etc.)",
+              "required": true,
+              "default_value": null
+            }
+          ],
+          "outputs": [
+            {
+              "name": "final_response",
+              "type": "string",
+              "description": "The final processed response that will be displayed"
+            }
+          ],
+          "parameters": [],
+          "styling": {
+            "icon": "",
+            "background_color": "#1f1f1f",
+            "border_color": "#10b981",
+            "text_color": "#ffffff",
+            "custom_css": "\n            .response-node-container {\n                display: flex;\n                align-items: center;\n                padding: 16px 20px;\n                background: #1f1f1f;\n                border: 1.5px solid #10b981;\n                border-radius: 9999px;\n                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);\n                transition: all 0.2s ease;\n                transform-origin: center center;\n                width: 220px;\n                height: 90px;\n                position: relative;\n            }\n            .response-node-container:hover {\n                border-color: #34d399;\n                box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);\n            }\n            .response-icon { margin-right: 12px; flex-shrink: 0; color: #10b981; display: flex; align-items: center; }\n            .response-icon svg { width: 20px; height: 20px; }\n            .response-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 2px; }\n            .response-title { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }\n            .response-subtitle { font-size: 11px; color: #10b981; opacity: 0.9; line-height: 1.2; }\n            .response-preview {\n                margin-top: 2px;\n                font-size: 11px;\n                color: #cbd5e1;\n                opacity: 0.9;\n                max-width: 160px;\n                white-space: nowrap;\n                overflow: hidden;\n                text-overflow: ellipsis;\n            }\n            ",
+            "subtitle": "",
+            "icon_position": "",
+            "shape": "custom",
+            "width": 220,
+            "height": 90,
+            "html_template": "\n            <div class=\"response-node-container\">\n                <div class=\"response-icon\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-monitor-up-icon lucide-monitor-up\"><path d=\"m9 10 3-3 3 3\"/><path d=\"M12 13V7\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><path d=\"M12 17v4\"/><path d=\"M8 21h8\"/></svg>\n                </div>\n                <div class=\"response-content\">\n                    <div class=\"response-title\">ResponseNode</div>\n                    <div class=\"response-subtitle\">OUTPUT</div>\n                    <div class=\"response-preview\" title=\"{{response_content}}\">{{response_content}}</div>\n                </div>\n            </div>\n            ",
+            "css_classes": "",
+            "inline_styles": "{}",
+            "hide_outputs": true
+          },
+          "ui_config": {
+            "node_id": "responsenode",
+            "node_name": "ResponseNode",
+            "groups": [
+              {
+                "name": "response_display",
+                "label": "Response Display",
+                "description": null,
+                "components": [
+                  {
+                    "type": "label",
+                    "name": "label_-2187745162332024883",
+                    "label": "",
+                    "description": null,
+                    "required": false,
+                    "default_value": null,
+                    "placeholder": null,
+                    "disabled": false,
+                    "visible": true,
+                    "validation": null,
+                    "styling": null,
+                    "text": "This node displays the final response from your workflow.",
+                    "html": false
+                  }
+                ],
+                "collapsible": false,
+                "collapsed": false,
+                "styling": {
+                  "padding": "16px",
+                  "background": "#2a2a2a",
+                  "border_radius": "8px",
+                  "border": "1px solid #404040"
+                }
+              }
+            ],
+            "global_styling": {
+              "font_family": "Inter, sans-serif",
+              "color_scheme": "light"
+            },
+            "layout": "vertical",
+            "columns": null,
+            "dialog_config": {
+              "title": "Configure ResponseNode",
+              "description": "Response Node - Displays the final response from your workflow.",
+              "width": "max-w-2xl",
+              "height": "max-h-[90vh]",
+              "background_color": "#1f1f1f",
+              "border_color": "#10b981",
+              "text_color": "#ffffff",
+              "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                    <path d=\"M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z\" stroke=\"#10b981\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"/>\n                </svg>",
+              "icon_color": "#10b981",
+              "header_background": "#1f1f1f",
+              "footer_background": "#1f1f1f",
+              "button_primary_color": "#10b981",
+              "button_secondary_color": "#374151"
+            }
+          }
+        },
+        "parameters": {},
+        "response": "Hello! How can I assist you today?",
+        "response_content": "Hello! How can I assist you today?"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "xy-edge__querynode_1761942835827output-query-languagemodelnode_1761942839838input-query",
+      "source": "querynode_1761942835827",
+      "target": "languagemodelnode_1761942839838",
+      "sourceHandle": "output-query",
+      "targetHandle": "input-query"
+    },
+    {
+      "id": "xy-edge__languagemodelnode_1761942839838output-response-responsenode_1761942841569input-input_data",
+      "source": "languagemodelnode_1761942839838",
+      "target": "responsenode_1761942841569",
+      "sourceHandle": "output-response",
+      "targetHandle": "input-input_data"
+    }
+  ],
+  "timestamp": "2025-10-31T20:35:05.243Z",
+  "name": "Basic Chatbot"
+}

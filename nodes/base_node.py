@@ -48,12 +48,13 @@ class NodeStyling:
     custom_css: Optional[str] = None  # Additional CSS styles
     subtitle: Optional[str] = None  # Custom subtitle text
     icon_position: str = "left"  # "left", "right", "top", "bottom"
-    shape: str = "rectangle"  # "rectangle", "circle", "rounded", "custom"
+    shape: str = "rectangle"  # "rectangle", "circle", "rounded", "hexagon", "diamond", "pill", "compact", "custom"
     width: Optional[int] = None  # Fixed width in pixels
     height: Optional[int] = None  # Fixed height in pixels
     html_template: Optional[str] = None  # Custom HTML template
     css_classes: Optional[str] = None  # Additional CSS classes
     inline_styles: Optional[str] = None  # Additional inline styles as JSON string
+    hide_outputs: bool = False  # If True, hide output handles in the UI (for terminal nodes)
 
 
 class BaseNode(ABC):
@@ -169,7 +170,8 @@ class BaseNode(ABC):
                 "height": self.styling.height,
                 "html_template": self.styling.html_template,
                 "css_classes": self.styling.css_classes,
-                "inline_styles": self.styling.inline_styles
+                "inline_styles": self.styling.inline_styles,
+                "hide_outputs": self.styling.hide_outputs
             },
             "ui_config": {
                 "node_id": self.ui_config.node_id,

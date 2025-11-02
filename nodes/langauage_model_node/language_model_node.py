@@ -106,89 +106,44 @@ class LanguageModelNode(BaseNode):
     def _define_styling(self) -> NodeStyling:
         """Define custom styling for LanguageModelNode"""
         return NodeStyling(
-            # Custom HTML template - everything rendered from HTML/CSS
             html_template="""
-            <div class="ai-node-container">
-                <div class="ai-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 18V5"/>
-                        <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/>
-                        <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/>
-                        <path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/>
-                        <path d="M18 18a4 4 0 0 0 2-7.464"/>
-                        <path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/>
-                        <path d="M6 18a4 4 0 0 1-2-7.464"/>
-                        <path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/>
-                    </svg>
+            <div class="lm-node-container">
+                <div class="lm-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor-up-icon lucide-monitor-up"><path d="m9 10 3-3 3 3"/><path d="M12 13V7"/><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
                 </div>
-                <div class="ai-content">
-                    <div class="ai-title">Language Model</div>
-                    <div class="ai-subtitle">AI Brain</div>
+                <div class="lm-content">
+                    <div class="lm-title">LanguageModelNode</div>
+                    <div class="lm-subtitle">AI BRAIN</div>
                 </div>
             </div>
             """,
-            
-            # Complete CSS styling - no computation needed
             custom_css="""
-            .ai-node-container {
+            .lm-node-container {
                 display: flex;
                 align-items: center;
-                padding: 16px 20px;
+                padding: 18px 22px;
                 background: #1f1f1f;
                 border: 1.5px solid #a78bfa;
-                border-radius: 8px;
+                border-radius: 12px;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
                 transition: all 0.2s ease;
-                width: 220px;
-                height: 100px;
+                transform-origin: center center;
+                width: 240px;
+                height: 110px;
                 position: relative;
             }
-            
-            .ai-node-container:hover {
+            .lm-node-container:hover {
                 border-color: #c4b5fd;
                 box-shadow: 0 4px 12px rgba(167, 139, 250, 0.2);
             }
-            
-            .ai-icon {
-                margin-right: 12px;
-                flex-shrink: 0;
-            }
-            
-            .ai-content {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            
-            .ai-title {
-                font-size: 13px;
-                font-weight: 500;
-                color: #ffffff;
-                margin-bottom: 2px;
-                line-height: 1.2;
-            }
-            
-            .ai-subtitle {
-                font-size: 11px;
-                color: #a78bfa;
-                opacity: 0.9;
-                line-height: 1.2;
-            }
+            .lm-icon { margin-right: 12px; flex-shrink: 0; color: #a78bfa; display: flex; align-items: center; }
+            .lm-icon svg { width: 20px; height: 20px; }
+            .lm-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+            .lm-title { font-size: 13px; font-weight: 600; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }
+            .lm-subtitle { font-size: 11px; color: #a78bfa; opacity: 0.9; line-height: 1.2; }
             """,
-            
-            # No icon, subtitle, or other properties needed - everything in HTML
-            icon="",
-            subtitle="",
-            background_color="#1f1f1f",
-            border_color="#a78bfa",
-            text_color="#ffffff",
-            shape="custom",
-            width=220,
-            height=100,
-            css_classes="",
-            inline_styles='{}',
-            icon_position=""
+            icon="", subtitle="", background_color="#1f1f1f", border_color="#a78bfa", text_color="#ffffff",
+            shape="custom", width=240, height=110, css_classes="", inline_styles='{}', icon_position=""
         )
     
     def _define_ui_config(self) -> NodeUIConfig:

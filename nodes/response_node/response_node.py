@@ -57,55 +57,53 @@ class ResponseNode(BaseNode):
             html_template="""
             <div class="response-node-container">
                 <div class="response-icon">
-                    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                        <path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z' stroke='#10b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/>
-                        <path d='M13 8H7M17 12H7' stroke='#10b981' stroke-width='2' stroke-linecap='round'/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor-up-icon lucide-monitor-up"><path d="m9 10 3-3 3 3"/><path d="M12 13V7"/><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
                 </div>
                 <div class="response-content">
-                    <div class="response-title">Response Node</div>
-                    <div class="response-subtitle">Bot Response</div>
-                    <div class="response-text">{{response_content}}</div>
+                    <div class="response-title">ResponseNode</div>
+                    <div class="response-subtitle">OUTPUT</div>
+                    <div class="response-preview" title="{{response_content}}">{{response_content}}</div>
                 </div>
             </div>
             """,
             custom_css="""
             .response-node-container {
                 display: flex;
-                align-items: flex-start;
+                align-items: center;
                 padding: 16px 20px;
                 background: #1f1f1f;
                 border: 1.5px solid #10b981;
-                border-radius: 8px;
+                border-radius: 9999px;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
                 transition: all 0.2s ease;
-                width: 300px;
-                min-height: 120px;
+                transform-origin: center center;
+                width: 220px;
+                height: 90px;
                 position: relative;
             }
             .response-node-container:hover {
                 border-color: #34d399;
                 box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
             }
-            .response-icon { margin-right: 12px; flex-shrink: 0; margin-top: 2px; }
-            .response-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+            .response-icon { margin-right: 12px; flex-shrink: 0; color: #10b981; display: flex; align-items: center; }
+            .response-icon svg { width: 20px; height: 20px; }
+            .response-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
             .response-title { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }
-            .response-subtitle { font-size: 11px; color: #10b981; opacity: 0.9; line-height: 1.2; margin-bottom: 8px; }
-            .response-text { 
-                font-size: 12px; 
-                color: #e5e7eb; 
-                line-height: 1.4; 
-                padding: 8px; 
-                background: #2a2a2a; 
-                border-radius: 4px; 
-                border: 1px solid #404040;
-                word-wrap: break-word;
-                white-space: pre-wrap;
-                min-height: 40px;
+            .response-subtitle { font-size: 11px; color: #10b981; opacity: 0.9; line-height: 1.2; }
+            .response-preview {
+                margin-top: 2px;
+                font-size: 11px;
+                color: #cbd5e1;
+                opacity: 0.9;
+                max-width: 160px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             """,
             icon="", subtitle="", background_color="#1f1f1f", border_color="#10b981", text_color="#ffffff",
-            shape="custom", width=300, height=120, css_classes="", inline_styles='{"height": "auto"}', icon_position=""
+            shape="custom", width=220, height=90, css_classes="", inline_styles='{}', icon_position="",
+            hide_outputs=True  # Response node is terminal - hide output handles
         )
     
     def _define_ui_config(self) -> NodeUIConfig:

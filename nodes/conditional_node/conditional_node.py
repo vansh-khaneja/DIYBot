@@ -100,29 +100,40 @@ class ConditionalNode(BaseNode):
         ]
 
     def _define_styling(self) -> NodeStyling:
+        # Custom HTML to render a rounded diamond with orange accent, consistent with other nodes
         return NodeStyling(
             html_template="""
-            <div class="cond-node">
-                <div class="cond-header">Conditional Node</div>
-                <div class="cond-operator">Operator: {{operator}}</div>
+            <div class=\"cond-node-outer\">
+                <div class=\"cond-node-inner\">
+                    <div class=\"cond-icon\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-network-icon lucide-network\"><rect x=\"16\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\"/><rect x=\"2\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\"/><rect x=\"9\" y=\"2\" width=\"6\" height=\"6\" rx=\"1\"/><path d=\"M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3\"/><path d=\"M12 12V8\"/></svg>
+                    </div>
+                    <div class=\"cond-content\">
+                        <div class=\"cond-title\">Conditional Node</div>
+                        <div class=\"cond-subtitle\">DECISION</div>
+                    </div>
+                </div>
             </div>
             """,
             custom_css="""
-            .cond-node { padding: 12px 14px; background: #1f1f1f; border: 1.5px solid #f59e0b; border-radius: 8px; width: 280px; }
-            .cond-header { color: #fff; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-            .cond-operator { color: #f59e0b; font-size: 11px; opacity: 0.95; }
+            .cond-node-outer {
+                width: 160px; height: 110px; position: relative; /* wider for text */
+                border-radius: 4px; /* sharper corners */
+                background: #1f1f1f;
+                border: 1.5px solid #f59e0b;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+                transform-origin: center center;
+            }
+            .cond-node-outer:hover { border-color: #fbbf24; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2); }
+            .cond-node-inner { position: absolute; inset: 8px; display: grid; grid-template-columns: 18px 1fr; column-gap: 8px; align-items: center; }
+            .cond-icon { color: #f59e0b; display: flex; align-items: start; padding-top: 2px; }
+            .cond-icon svg { width: 16px; height: 16px; }
+            .cond-content { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+            .cond-title { font-size: 12px; font-weight: 700; color: #ffffff; margin-bottom: 2px; line-height: 1.2; white-space: normal; word-break: break-word; }
+            .cond-subtitle { font-size: 10px; color: #f59e0b; opacity: 0.9; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
             """,
-            icon="",
-            subtitle="",
-            background_color="#1f1f1f",
-            border_color="#f59e0b",
-            text_color="#ffffff",
-            shape="custom",
-            width=280,
-            height=100,
-            css_classes="",
-            inline_styles='{"height": "auto"}',
-            icon_position="",
+            icon="", subtitle="", background_color="#1f1f1f", border_color="#f59e0b", text_color="#ffffff",
+            shape="custom", width=110, height=110, css_classes="", inline_styles='{}', icon_position=""
         )
 
     def _define_ui_config(self) -> NodeUIConfig:

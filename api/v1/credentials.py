@@ -81,6 +81,46 @@ async def delete_credential(payload: DeletePayload):
         raise HTTPException(status_code=500, detail=f"Failed to delete credential: {str(e)}")
 
 
+@router.get("/", response_model=Dict[str, Any])
+async def list_credentials():
+    """
+    List all credentials (keys) from the .env file without exposing their values.
+    
+    Returns:
+        Dict containing list of credential keys
+    """
+    try:
+        env_path = Path(".") / ".env"
+        credentials = []
+        
+        if env_path.exists():
+            # Read the .env file and parse all key-value pairs
+            with open(env_path, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+            
+            for line in lines:
+                line = line.strip()
+                # Skip empty lines and comments
+                if not line or line.startswith("#"):
+                    continue
+                
+                # Parse KEY=VALUE format
+                if "=" in line:
+                    key = line.split("=", 1)[0].strip()
+                    if key:
+                        credentials.append(key)
+        
+        return {
+            "success": True,
+            "data": {
+                "credentials": credentials,
+                "count": len(credentials)
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to list credentials: {str(e)}")
+
+
 @router.post("/refresh", response_model=Dict[str, Any])
 async def refresh_environment():
     """

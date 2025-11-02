@@ -52,77 +52,57 @@ class QueryNode(BaseNode):
         ]
     
     def _define_styling(self) -> NodeStyling:
-        """Define custom styling for QueryNode with inline editing"""
+        """Define custom styling for QueryNode"""
         return NodeStyling(
             html_template="""
-            <div class="query-node-container">
-                <div class="query-icon">
-                    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                        <path d='M8 9h8M8 13h6M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z' stroke='#60a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/>
-                    </svg>
+            <div class=\"query-node-container\">
+                <div class=\"query-icon\">
+                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-monitor-down-icon lucide-monitor-down\"><path d=\"M12 13V7\"/><path d=\"m15 10-3 3-3-3\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"3\" rx=\"2\"/><path d=\"M12 17v4\"/><path d=\"M8 21h8\"/></svg>
                 </div>
-                <div class="query-content">
-                    <div class="query-title">Query Node</div>
-                    <div class="query-display">{{query}}</div>
+                <div class=\"query-content\">
+                    <div class=\"query-title\">QueryNode</div>
+                    <div class=\"query-subtitle\">INPUT</div>
+                    <div class=\"query-preview\" title=\"{{query}}\">{{query}}</div>
                 </div>
             </div>
             """,
             custom_css="""
             .query-node-container {
                 display: flex;
-                align-items: flex-start;
+                align-items: center;
                 padding: 16px 20px;
                 background: #1f1f1f;
-                border: 1.5px solid #60a5fa;
-                border-radius: 8px;
+                border: 1.5px solid #06b6d4;
+                border-radius: 9999px;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
                 transition: all 0.2s ease;
-                width: 280px;
-                min-height: 120px;
+                transform-origin: center center;
+                width: 220px;
+                height: 90px;
                 position: relative;
-                cursor: pointer;
             }
             .query-node-container:hover {
-                border-color: #93c5fd;
-                box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+                border-color: #22d3ee;
+                box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
             }
-            .query-node-container.editing {
-                min-height: 160px;
-                border-color: #10b981;
-            }
-            .query-icon { 
-                margin-right: 12px; 
-                flex-shrink: 0; 
-            }
-            .query-content { 
-                flex: 1; 
-                display: flex; 
-                flex-direction: column; 
-                justify-content: flex-start; 
-            }
-            .query-title { 
-                font-size: 13px; 
-                font-weight: 500; 
-                color: #ffffff; 
-                margin-bottom: 2px; 
-                line-height: 1.2; 
-            }
-            .query-display {
-                font-size: 11px; 
-                color: #60a5fa; 
-                opacity: 0.9; 
-                line-height: 1.2;
-                padding: 4px 8px;
-                background: rgba(96, 165, 250, 0.1);
-                border-radius: 4px;
-                border: 1px solid rgba(96, 165, 250, 0.2);
-                word-wrap: break-word;
-                white-space: pre-wrap;
-                min-height: 20px;
+            .query-icon { margin-right: 12px; flex-shrink: 0; color: #06b6d4; display: flex; align-items: center; }
+            .query-icon svg { width: 20px; height: 20px; }
+            .query-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+            .query-title { font-size: 13px; font-weight: 500; color: #ffffff; margin-bottom: 2px; line-height: 1.2; }
+            .query-subtitle { font-size: 11px; color: #06b6d4; opacity: 0.9; line-height: 1.2; }
+            .query-preview {
+                margin-top: 2px;
+                font-size: 11px;
+                color: #cbd5e1;
+                opacity: 0.9;
+                max-width: 160px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             """,
-            icon="", subtitle="", background_color="#1f1f1f", border_color="#60a5fa", text_color="#ffffff",
-            shape="custom", width=280, height=120, css_classes="", inline_styles='{"height": "auto"}', icon_position=""
+            icon="", subtitle="", background_color="#1f1f1f", border_color="#06b6d4", text_color="#ffffff",
+            shape="custom", width=220, height=90, css_classes="", inline_styles='{}', icon_position=""
         )
     
     def _define_ui_config(self) -> NodeUIConfig:
